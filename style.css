@@ -1,0 +1,212 @@
+:root {
+  --bg: linear-gradient(135deg, #f5f7fa, #e4ebf5);
+  --card: rgba(255, 255, 255, 0.95);
+  --accent: #6366f1;
+  --accent2: #8b5cf6;
+  --muted: #6b7280;
+  --danger: #ef4444;
+  --success: #10b981;
+  --shadow: 0 8px 20px rgba(0,0,0,0.08);
+  --radius: 16px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--bg);
+  color: #111827;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+h1 {
+  margin: 4px 0;
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 18px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form */
+.form-card .row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+input, select, textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  font-size: 14px;
+  transition: var(--transition);
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+input[type="text"] { flex: 1 1 260px; min-width: 180px; }
+input[type="date"] { width: 160px; }
+select { min-width: 120px; }
+textarea { width: 100%; min-height: 70px; resize: vertical; }
+
+button {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+button:hover { transform: translateY(-2px); opacity: 0.9; }
+button.danger {
+  background: var(--danger);
+}
+button.danger:hover { opacity: 0.85; }
+
+.spacer { flex: 1; }
+
+/* Tasks */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: var(--transition);
+}
+.task-item:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow);
+}
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.checkbox {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 2px solid #d1d5db;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.checkbox.checked {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.task-meta { display: flex; flex-direction: column; }
+.task-title { font-weight: 600; }
+.task-notes { font-size: 13px; color: var(--muted); }
+.task-due { font-size: 13px; color: #ef4444; font-weight: 500; }
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* Priority colors */
+.task-item.priority-high { border-left: 5px solid #ef4444; }
+.task-item.priority-medium { border-left: 5px solid #f59e0b; }
+.task-item.priority-low { border-left: 5px solid #10b981; }
+
+.controls button {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid #e5e7eb;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.controls button:hover {
+  background: #f3f4f6;
+}
+
+/* Progress */
+.progress-card h3 { margin: 0; }
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.progress-bar {
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.4s ease;
+}
+
+#emptyMsg {
+  display: none;
+  text-align: center;
+  padding: 12px;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .form-card .row { flex-direction: column; }
+  input[type="date"], select { width: 100%; }
+  .spacer { display: none; }
+}

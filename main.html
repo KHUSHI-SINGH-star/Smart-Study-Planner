@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📘 Smart Study Planner</h1>
+      <p class="subtitle">Study goals डालो — Complete करो — Progress देखो</p>
+    </header>
+
+    <!-- Form -->
+    <section class="card form-card">
+      <div class="row">
+        <input id="taskTitle" type="text" placeholder="Study goal (जैसे: Read Chapter 5)" />
+        <input id="taskDate" type="date" />
+        <select id="taskPriority" title="Priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <textarea id="taskNotes" placeholder="Optional notes..."></textarea>
+
+      <div class="row actions">
+        <button id="addTaskBtn">+ Add Task</button>
+        <button id="clearAllBtn" class="danger">Clear All</button>
+
+        <div class="spacer"></div>
+
+        <label for="sortSelect">Sort:</label>
+        <select id="sortSelect">
+          <option value="createdDesc">Newest</option>
+          <option value="dateAsc">Due date ↑</option>
+          <option value="dateDesc">Due date ↓</option>
+          <option value="priority">Priority</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Tasks list -->
+    <section class="card">
+      <h2>My Study Goals</h2>
+      <ul id="taskList" class="task-list"></ul>
+      <p id="emptyMsg" class="muted">कोई task नहीं है — ऊपर जोड़िए।</p>
+    </section>
+
+    <!-- Progress -->
+    <section class="card progress-card">
+      <div class="progress-header">
+        <h3>Progress</h3>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+    </section>
+
+    <footer class="muted small">
+      Made with ❤️ — Data saved in your browser (Local Storage)
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
